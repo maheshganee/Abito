@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Comment</title>
+	<meta charset="utf-8" />
+	{% load static %}
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+</head>
+<body>
+	<h1 align="center"> Add Comment </h1>
+
+	<table align="center">
+		<form action="/post_comment/" method="POST">
+			{% csrf_token %}
+			<tr>
+				<td>Post Title</td>
+				<td>
+					<input type="text" name="title_name" value="{{title}}">
+				</td>
+			</tr>
+			<tr>
+				<td>Message</td>
+				<td>
+					<input type="text" name="bodytext" value="Enter comment here!!">
+				</td>
+			</tr>
+			<tr>
+				<td>User</td>
+				<td>
+					<select name="user">
+						{% for user in users %}
+							<option>{{user}}</option>
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr><td colspan="2" align="center"><input type="submit" value="Post Comment"></td></tr>
+		</form>
+	</table>
+</body>
+</html>
